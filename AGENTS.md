@@ -25,7 +25,7 @@ The project is currently at initialization: the repository has only a README, wh
 - **Frontend**: SvelteKit with TypeScript for the web app.
 - **Backend**: NestJS with TypeScript for HTTP APIs, validation, auth guards, and modular domain boundaries.
 - **Database access**: Prisma ORM with migrations.
-- **Database**: PostgreSQL for relational integrity across users, NGOs, opportunities, applications, events, and participation history.
+- **Database**: Supabase remoto, usando PostgreSQL gerenciado para integridade relacional entre usuários, ONGs, oportunidades, candidaturas, eventos e histórico de participação.
 - **Auth**: JWT access tokens with role-based guards for volunteer, NGO, and admin capabilities.
 - **Quality**: ESLint, Prettier, unit tests for services, and integration tests for core API flows.
 ## Rationale

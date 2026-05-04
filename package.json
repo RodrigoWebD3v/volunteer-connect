@@ -11,10 +11,7 @@
     "format": "npm --prefix backend run format && npm --prefix frontend run format",
     "check": "npm --prefix backend run build && npm --prefix frontend run check",
     "test": "npm --prefix backend test && npm --prefix frontend test",
-    "verify": "npm run lint && npm run format && npm run check && npm test",
-    "docker:up": "docker compose --env-file .env up -d",
-    "docker:down": "docker compose down",
-    "docker:config": "docker compose --env-file .env.example config"
+    "verify": "npm run lint && npm run format && npm run check && npm test"
   },
   "devDependencies": {
     "concurrently": "^9.2.1"

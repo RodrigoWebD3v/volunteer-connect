@@ -10,7 +10,6 @@ key_files:
   created:
     - "package.json"
     - "package-lock.json"
-    - "compose.yaml"
     - ".env.example"
     - ".gitignore"
   modified:
@@ -21,7 +20,7 @@ key_files:
 
 ## Resultado
 
-Fluxo raiz criado com scripts npm para executar backend e frontend, rodar validações completas e controlar infraestrutura local via Docker Compose. O README principal documenta instalação, portas, Docker, comandos de desenvolvimento e validação em português.
+Fluxo raiz criado com scripts npm para executar backend e frontend e rodar validações completas. Após decisão pós-execução, a infraestrutura local via Docker Compose foi substituída por variáveis de ambiente para Supabase remoto. O README principal documenta instalação, portas, Supabase, comandos de desenvolvimento e validação em português.
 
 ## Verificação
 
@@ -31,15 +30,15 @@ Fluxo raiz criado com scripts npm para executar backend e frontend, rodar valida
 - `npm test`: passou.
 - `npm run verify`: passou.
 - `Select-String -Path README.md -Pattern "npm install"`: passou.
-- `Select-String -Path README.md -Pattern "docker compose"`: passou.
+- `Select-String -Path README.md -Pattern "Supabase"`: passou.
 - `Select-String -Path README.md -Pattern "3000"`: passou.
 - `Select-String -Path README.md -Pattern "5173"`: passou.
 - `Select-String -Path README.md -Pattern "npm run verify"`: passou.
 
-## Validação pendente
+## Decisão posterior
 
-- `npm run docker:config` não pôde ser executado com sucesso porque `docker` não está instalado ou não está disponível no PATH desta sessão.
+- Em 2026-05-04, o projeto passou a usar Supabase remoto para evitar banco local. Os scripts Docker e `compose.yaml` foram removidos.
 
 ## Observações
 
-O `compose.yaml` cria apenas PostgreSQL local com placeholders de desenvolvimento. Schema, migrations, Prisma e dados iniciais permanecem reservados para a Fase 2.
+Schema, migrations, Prisma e dados iniciais permanecem reservados para a Fase 2, apontando para as variáveis `DATABASE_URL` e `DIRECT_URL`.

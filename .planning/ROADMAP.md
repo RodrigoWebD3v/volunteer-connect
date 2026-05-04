@@ -35,13 +35,13 @@
 
 ### Phase 2: Data Model Foundation
 
-**Goal:** Create the initial relational model needed by the volunteer/NGO workflow.
+**Goal:** Create the initial relational model needed by the volunteer/NGO workflow using the remote Supabase database.
 
 **Requirements:** DATA-01, DATA-02, DATA-03, DATA-04, DATA-05, DATA-06, DATA-07
 
 **Success Criteria:**
 1. Prisma schema includes users, volunteers, NGOs, opportunities, applications, events, and participations.
-2. Migrations run from a clean database.
+2. Migrations run against the configured Supabase development database.
 3. Seed or insertion test proves the core relationships work.
 4. Schema supports volunteer, NGO, and admin roles without duplicating account identity.
 
@@ -126,4 +126,4 @@
 - Unmapped requirements: 0
 
 ---
-*Last updated: 2026-05-04 after Phase 1 execution*
+*Last updated: 2026-05-04 after Supabase decision*

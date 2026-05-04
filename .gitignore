@@ -19,7 +19,7 @@ frontend/coverage/
 !.env.example
 !.env.test
 
-# Docker/local
+# Logs e processos locais
 *.pid
 *.log
 

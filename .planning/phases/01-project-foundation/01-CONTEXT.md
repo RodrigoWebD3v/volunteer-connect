@@ -33,10 +33,10 @@ Establish a runnable full-stack project foundation with backend NestJS, frontend
 
 ### Local Development Experience
 
-- **D-10:** Prefer a Docker-based local experience where useful.
-- **D-11:** Include Docker support for local development, with special attention to services that will matter soon, especially the database.
+- **D-10:** Use Supabase remoto for the database to avoid local PostgreSQL/Docker setup friction.
+- **D-11:** Keep local development focused on running backend and frontend with npm.
 - **D-12:** The phase should include `.env.example` and documented default ports for backend and frontend.
-- **D-13:** If full app containerization would slow down setup, the planner may choose a pragmatic split: run app processes with `npm` locally and provide Docker Compose for infrastructure services.
+- **D-13:** Database schema and migration decisions remain deferred to Phase 2, using Supabase connection variables.
 
 ### the agent's Discretion
 
@@ -53,7 +53,7 @@ Establish a runnable full-stack project foundation with backend NestJS, frontend
 - User explicitly prefers "pasta mais simples" for the repo layout.
 - User explicitly selected `npm`.
 - User wants quality setup to be covered totally from the start.
-- User prefers a local development experience with Docker.
+- User initially preferred Docker for local development, then decided to use Supabase remoto to avoid local database friction.
 
 </specifics>
 
@@ -88,7 +88,7 @@ Establish a runnable full-stack project foundation with backend NestJS, frontend
 
 ### Integration Points
 
-- `README.md` should be expanded with install, run, Docker, and quality-check instructions.
+- `README.md` should be expanded with install, run, Supabase environment variables, and quality-check instructions.
 - `AGENTS.md` already documents the project and GSD workflow; implementation should stay aligned with it.
 - `.planning/REQUIREMENTS.md` traceability maps SETUP-01..SETUP-03 to this phase.
 
@@ -97,7 +97,7 @@ Establish a runnable full-stack project foundation with backend NestJS, frontend
 <deferred>
 ## Deferred Ideas
 
-- Domain database modeling belongs to Phase 2. Docker may prepare a local database service, but schema/model decisions should remain in Phase 2.
+- Domain database modeling belongs to Phase 2. Supabase remoto provides the database target, but schema/model decisions should remain in Phase 2.
 - Authentication, roles, and JWT belong to Phase 3.
 - NGO, opportunity, application, event, and participation features belong to later phases.
 
@@ -106,4 +106,4 @@ Establish a runnable full-stack project foundation with backend NestJS, frontend
 ---
 
 *Phase: 01-project-foundation*
-*Context gathered: 2026-05-04*
+*Context updated: 2026-05-04 after Supabase decision*

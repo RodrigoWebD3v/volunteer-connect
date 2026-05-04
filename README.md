@@ -2,13 +2,13 @@
 
 Volunteer Connect é uma plataforma para conectar organizações, oportunidades de voluntariado e pessoas voluntárias.
 
-Esta fase do projeto entrega apenas a fundação local: backend NestJS, frontend SvelteKit, scripts npm de qualidade e infraestrutura local com PostgreSQL via Docker Compose. A modelagem do banco, Prisma, autenticação e fluxos de produto começam na Fase 2.
+Esta fase do projeto entrega a fundação local: backend NestJS, frontend SvelteKit, scripts npm de qualidade e variáveis de ambiente para integração com Supabase remoto. A modelagem do banco, Prisma, autenticação e fluxos de produto começam na Fase 2.
 
 ## Pré-requisitos
 
 - Node.js 20+
 - npm 10+
-- Docker com Docker Compose, para a infraestrutura local
+- Um projeto Supabase remoto
 
 ## Instalação
 
@@ -20,7 +20,7 @@ npm --prefix backend install
 npm --prefix frontend install
 ```
 
-## Ambiente local
+## Ambiente
 
 Crie o arquivo `.env` a partir do exemplo:
 
@@ -28,33 +28,20 @@ Crie o arquivo `.env` a partir do exemplo:
 Copy-Item .env.example .env
 ```
 
-Os valores padrão de desenvolvimento usam:
+Depois, preencha no `.env` os valores do painel do Supabase:
+
+- `SUPABASE_URL`
+- `SUPABASE_ANON_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `DATABASE_URL`
+- `DIRECT_URL`
+
+Nunca commite o `.env`. A chave `SUPABASE_SERVICE_ROLE_KEY` deve ser usada somente no backend.
+
+## Portas locais
 
 - Backend: `http://localhost:3000`
 - Frontend: `http://localhost:5173`
-- PostgreSQL: `localhost:5432`
-
-## Docker
-
-Valide a configuração:
-
-```powershell
-npm run docker:config
-```
-
-Suba o PostgreSQL local:
-
-```powershell
-npm run docker:up
-```
-
-Pare os serviços:
-
-```powershell
-npm run docker:down
-```
-
-O Compose desta fase cria apenas a infraestrutura local. Schema, migrations e dados iniciais serão tratados na Fase 2.
 
 ## Desenvolvimento
 
@@ -94,3 +81,7 @@ npm test
 ```
 
 O backend e o frontend também continuam executáveis de forma independente com `npm --prefix backend ...` e `npm --prefix frontend ...`.
+
+## Banco de dados
+
+O projeto passa a usar Supabase remoto para evitar dependência de banco local. Schema, migrations e dados iniciais serão tratados na Fase 2, provavelmente com Prisma apontando para as variáveis `DATABASE_URL` e `DIRECT_URL`.

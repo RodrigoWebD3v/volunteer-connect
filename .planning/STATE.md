@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: active
-last_updated: "2026-05-04T20:32:00.000Z"
+last_updated: "2026-05-04T20:45:00.000Z"
 progress:
   total_phases: 8
   completed_phases: 1
@@ -23,7 +23,7 @@ See: `.planning/PROJECT.md` (updated 2026-05-04)
 
 ## Current Milestone
 
-Fase 1 concluída. O projeto tem backend NestJS, frontend SvelteKit, scripts raiz de qualidade e configuração local de PostgreSQL via Docker Compose. Próximo passo recomendado: `$gsd-discuss-phase 2`.
+Fase 1 concluída. O projeto tem backend NestJS, frontend SvelteKit, scripts raiz de qualidade e variáveis de ambiente para Supabase remoto. Próximo passo recomendado: `$gsd-discuss-phase 2`.
 
 ## Phase Status
 
@@ -43,7 +43,8 @@ Fase 1 concluída. O projeto tem backend NestJS, frontend SvelteKit, scripts rai
 - GSD project initialized from local README, GitHub issues #1-#6, `circulo dourado.pdf`, and `relatorio semanal final(1).docx`.
 - GSD subagents were not installed, so research and roadmap were generated inline.
 - GitHub CLI was not available; issues were read via the public GitHub API.
-- Fase 1 executada em 2026-05-04. `npm run verify` passou. `npm run docker:config` não pôde ser validado porque `docker` não está disponível no PATH desta sessão.
+- Fase 1 executada em 2026-05-04. `npm run verify` passou.
+- Decisão pós-execução em 2026-05-04: usar Supabase remoto em vez de PostgreSQL local via Docker Compose, para reduzir atrito de ambiente local. O fluxo Docker foi removido da fundação.
 
 ---
-*Last updated: 2026-05-04 after Phase 1 execution*
+*Last updated: 2026-05-04 after Supabase decision*

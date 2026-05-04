@@ -69,6 +69,7 @@ Volunteers can find a trustworthy opportunity and NGOs can organize participatio
 | Use NestJS for the backend | Existing GitHub setup issue names NestJS as the backend direction and it fits role-based APIs well. | - Pending |
 | Use SvelteKit for the frontend | Existing GitHub setup issue names SvelteKit and it supports a focused web MVP. | - Pending |
 | Use Prisma for database modeling | Existing DB issue explicitly requests Prisma ORM and migrations. | - Pending |
+| Use Supabase remoto for the database | The project should avoid local database setup friction; Supabase provides a managed PostgreSQL target for development. | - Active |
 | Build web-first | The project documents describe a digital/web app and mobile is not required to validate the core flow. | - Pending |
 | Keep communication simple in v1 | Direct communication matters, but real-time chat would expand scope before matching is validated. | - Pending |
 
@@ -90,4 +91,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-05-04 after initialization*
+*Last updated: 2026-05-04 after Supabase decision*

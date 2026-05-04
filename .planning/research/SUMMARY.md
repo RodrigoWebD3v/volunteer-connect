@@ -2,7 +2,7 @@
 
 ## Stack
 
-Use SvelteKit, NestJS, TypeScript, Prisma, and PostgreSQL. This matches the existing GitHub issues and supports a clean academic MVP with clear module boundaries.
+Use SvelteKit, NestJS, TypeScript, Prisma, and Supabase remoto com PostgreSQL gerenciado. This matches the existing GitHub issues and supports a clean academic MVP with clear module boundaries while reducing local database setup friction.
 
 ## Table Stakes
 
