@@ -7,9 +7,9 @@
 
 ### Setup
 
-- [ ] **SETUP-01**: Developer can run the backend locally with TypeScript, linting, formatting, and a documented start command.
-- [ ] **SETUP-02**: Developer can run the SvelteKit frontend locally with TypeScript, linting, formatting, and a documented start command.
-- [ ] **SETUP-03**: Developer can run project checks for backend and frontend before committing.
+- [x] **SETUP-01**: Developer can run the backend locally with TypeScript, linting, formatting, and a documented start command.
+- [x] **SETUP-02**: Developer can run the SvelteKit frontend locally with TypeScript, linting, formatting, and a documented start command.
+- [x] **SETUP-03**: Developer can run project checks for backend and frontend before committing.
 
 ### Data Model
 
@@ -97,9 +97,9 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SETUP-01 | Phase 1 | Pending |
-| SETUP-02 | Phase 1 | Pending |
-| SETUP-03 | Phase 1 | Pending |
+| SETUP-01 | Phase 1 | Done |
+| SETUP-02 | Phase 1 | Done |
+| SETUP-03 | Phase 1 | Done |
 | DATA-01 | Phase 2 | Pending |
 | DATA-02 | Phase 2 | Pending |
 | DATA-03 | Phase 2 | Pending |
@@ -144,4 +144,4 @@
 
 ---
 *Requirements defined: 2026-05-04*
-*Last updated: 2026-05-04 after initial definition*
+*Last updated: 2026-05-04 after Phase 1 execution*

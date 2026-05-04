@@ -25,11 +25,13 @@
 
 **Requirements:** SETUP-01, SETUP-02, SETUP-03
 
+**Status:** Completed on 2026-05-04
+
 **Success Criteria:**
-1. Backend NestJS app runs locally with TypeScript.
-2. Frontend SvelteKit app runs locally with TypeScript.
-3. Lint/format/check commands are documented and executable.
-4. README explains how to install, run, and validate the project.
+1. Backend NestJS app runs locally with TypeScript. Done.
+2. Frontend SvelteKit app runs locally with TypeScript. Done.
+3. Lint/format/check commands are documented and executable. Done.
+4. README explains how to install, run, and validate the project. Done.
 
 ### Phase 2: Data Model Foundation
 
@@ -124,4 +126,4 @@
 - Unmapped requirements: 0
 
 ---
-*Last updated: 2026-05-04 after roadmap creation*
+*Last updated: 2026-05-04 after Phase 1 execution*
