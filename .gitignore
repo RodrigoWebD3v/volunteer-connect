@@ -1,0 +1,30 @@
+# Dependências
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+
+# Builds e artefatos gerados
+dist/
+backend/dist/
+frontend/.svelte-kit/
+frontend/build/
+frontend/.vite/
+coverage/
+backend/coverage/
+frontend/coverage/
+
+# Ambiente local e segredos
+.env
+.env.*
+!.env.example
+!.env.test
+
+# Docker/local
+*.pid
+*.log
+
+# Sistema operacional e editores
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
