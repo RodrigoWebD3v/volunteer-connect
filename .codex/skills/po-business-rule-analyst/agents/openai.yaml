@@ -1,0 +1,7 @@
+interface:
+  display_name: "P.O. de Regras"
+  short_description: "Transforma regras em issues rastreaveis"
+  default_prompt: "Use $po-business-rule-analyst para analisar uma regra de negocio e criar uma issue no GitHub."
+
+policy:
+  allow_implicit_invocation: true

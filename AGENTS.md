@@ -51,7 +51,7 @@ Architecture not yet mapped. Follow existing patterns found in the codebase.
 <!-- GSD:skills-start source:skills/ -->
 ## Project Skills
 
-No project skills found. Add skills to any of: `.claude/skills/`, `.agents/skills/`, `.cursor/skills/`, `.github/skills/`, or `.codex/skills/` with a `SKILL.md` index file.
+- `.codex/skills/po-business-rule-analyst/SKILL.md`: use para demandas de regra de negocio, refinamento funcional ou criacao de issue. A skill atua como P.O./analista de negocio, cria historia de usuario, separa analise de negocio e tecnica, identifica padroes/funcoes existentes reutilizaveis e registra a issue no GitHub em portugues.
 <!-- GSD:skills-end -->
 
 <!-- GSD:workflow-start source:GSD defaults -->
