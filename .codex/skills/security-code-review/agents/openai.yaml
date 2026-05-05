@@ -1,0 +1,7 @@
+interface:
+  display_name: "Security Review"
+  short_description: "Revisa codigo com foco em cybersecurity"
+  default_prompt: "Use $security-code-review para revisar seguranca das alteracoes antes de aprovar."
+
+policy:
+  allow_implicit_invocation: true

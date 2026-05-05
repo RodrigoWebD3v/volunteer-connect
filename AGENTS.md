@@ -52,6 +52,7 @@ Architecture not yet mapped. Follow existing patterns found in the codebase.
 ## Project Skills
 
 - `.codex/skills/po-business-rule-analyst/SKILL.md`: use para demandas de regra de negocio, refinamento funcional ou criacao de issue. A skill atua como P.O./analista de negocio, cria historia de usuario, separa analise de negocio e tecnica, identifica padroes/funcoes existentes reutilizaveis e registra a issue no GitHub em portugues.
+- `.codex/skills/security-code-review/SKILL.md`: use sempre que codigo, dependencia, endpoint, auth, autorizacao, banco, Supabase, Prisma, upload ou configuracao sensivel for criado/alterado, e antes de PR/merge/build. A skill atua como profissional de cybersecurity, classifica severidade, recomenda correcao pratica e bloqueia riscos criticos ou altos nao mitigados.
 <!-- GSD:skills-end -->
 
 <!-- GSD:workflow-start source:GSD defaults -->
