@@ -4,7 +4,7 @@
 
 Volunteer Connect is a web platform for connecting volunteers with NGOs that need help. It centralizes volunteer opportunities, NGO profiles, events, applications, participation records, and basic communication so people who want to help can find real opportunities without confusion.
 
-The project is currently at initialization: the repository has only a README, while GitHub issues and project documents define the intended MVP around NestJS, SvelteKit, Prisma, authentication, NGO CRUD, and an initial volunteer opportunity data model.
+The project is currently at initialization: the repository has only a README, while GitHub issues and project documents define the intended MVP around NestJS, SvelteKit, Supabase remoto, authentication, NGO CRUD, and an initial volunteer opportunity data model.
 
 ## Core Value
 
@@ -44,7 +44,7 @@ Volunteers can find a trustworthy opportunity and NGOs can organize participatio
 - GitHub issues already created:
   - #1 `[SETUP] Configurar ambiente inicial do projeto`: backend NestJS, frontend SvelteKit, TypeScript, lint, Prettier.
   - #2 `[AUTH] Implementar autenticação com JWT`: registration, login, JWT, auth middleware, roles.
-  - #3 `[DB] Modelar banco de dados inicial`: users, volunteers, NGOs, opportunities, applications, events, participations, Prisma ORM.
+  - #3 `[DB] Modelar banco de dados inicial`: users, volunteers, NGOs, opportunities, applications, events, participations, Supabase remoto e migrations/scripts SQL.
   - #4 `[ONG] CRUD de ONGs`: backend endpoints and frontend NGO profile screen.
   - #5 `[SETUP] Inicializar frontend com SvelteKit`: SvelteKit, TypeScript, local run.
   - #6 `[DB] Criar tabela users`: user fields, migration, data insertion test.
@@ -56,7 +56,7 @@ Volunteers can find a trustworthy opportunity and NGOs can organize participatio
 
 ## Constraints
 
-- **Tech stack**: NestJS backend, SvelteKit frontend, TypeScript, Prisma ORM - already expressed in GitHub issues.
+- **Tech stack**: NestJS backend, SvelteKit frontend, TypeScript, Supabase remoto, Supabase client e migrations/scripts SQL.
 - **Project type**: Academic software engineering project - documentation, requirements, and traceability matter alongside implementation.
 - **Scope**: MVP should prioritize the core matching and participation flow before advanced social features.
 - **UX**: Interface must be simple, intuitive, and accessible for volunteers and NGO users with different technical comfort levels.
@@ -68,7 +68,6 @@ Volunteers can find a trustworthy opportunity and NGOs can organize participatio
 |----------|-----------|---------|
 | Use NestJS for the backend | Existing GitHub setup issue names NestJS as the backend direction and it fits role-based APIs well. | - Pending |
 | Use SvelteKit for the frontend | Existing GitHub setup issue names SvelteKit and it supports a focused web MVP. | - Pending |
-| Use Prisma for database modeling | Existing DB issue explicitly requests Prisma ORM and migrations. | - Pending |
 | Use Supabase remoto for the database | The project should avoid local database setup friction; Supabase provides a managed PostgreSQL target for development. | - Active |
 | Build web-first | The project documents describe a digital/web app and mobile is not required to validate the core flow. | - Pending |
 | Keep communication simple in v1 | Direct communication matters, but real-time chat would expand scope before matching is validated. | - Pending |

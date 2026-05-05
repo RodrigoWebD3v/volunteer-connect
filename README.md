@@ -2,7 +2,7 @@
 
 Volunteer Connect é uma plataforma para conectar organizações, oportunidades de voluntariado e pessoas voluntárias.
 
-Esta fase do projeto entrega a fundação local: backend NestJS, frontend SvelteKit, scripts npm de qualidade e variáveis de ambiente para integração com Supabase remoto. A modelagem do banco, Prisma, autenticação e fluxos de produto começam na Fase 2.
+Esta fase do projeto entrega a fundação local: backend NestJS, frontend SvelteKit, scripts npm de qualidade e variáveis de ambiente para integração com Supabase remoto. A modelagem do banco, autenticação e fluxos de produto começam na Fase 2.
 
 ## Pré-requisitos
 
@@ -33,8 +33,7 @@ Depois, preencha no `.env` os valores do painel do Supabase:
 - `SUPABASE_URL`
 - `SUPABASE_ANON_KEY`
 - `SUPABASE_SERVICE_ROLE_KEY`
-- `DATABASE_URL`
-- `DIRECT_URL`
+- `DATABASE_URL`, quando for necessário executar migrations ou scripts SQL diretos
 
 Nunca commite o `.env`. A chave `SUPABASE_SERVICE_ROLE_KEY` deve ser usada somente no backend.
 
@@ -84,4 +83,4 @@ O backend e o frontend também continuam executáveis de forma independente com 
 
 ## Banco de dados
 
-O projeto passa a usar Supabase remoto para evitar dependência de banco local. Schema, migrations e dados iniciais serão tratados na Fase 2, provavelmente com Prisma apontando para as variáveis `DATABASE_URL` e `DIRECT_URL`.
+O projeto usa Supabase remoto para evitar dependência de banco local. Schema, migrations e dados iniciais serão tratados na Fase 2 com Supabase client e scripts/migrations SQL versionados no repositório.

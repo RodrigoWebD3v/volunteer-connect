@@ -41,4 +41,4 @@ Fluxo raiz criado com scripts npm para executar backend e frontend e rodar valid
 
 ## Observações
 
-Schema, migrations, Prisma e dados iniciais permanecem reservados para a Fase 2, apontando para as variáveis `DATABASE_URL` e `DIRECT_URL`.
+Schema Supabase, migrations SQL e dados iniciais permanecem reservados para a Fase 2, apontando para as variáveis do Supabase em `.env`.

@@ -39,4 +39,4 @@ npm run test
 
 ## Observações de escopo
 
-Esta fase cria apenas a fundação do backend. Autenticação, Prisma, modelagem do banco e módulos de domínio entram nas próximas fases do GSD.
+Esta fase cria apenas a fundação do backend. Autenticação, integração com Supabase, modelagem do banco e módulos de domínio entram nas próximas fases do GSD.

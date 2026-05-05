@@ -37,4 +37,4 @@ O NestJS gerou um aviso de lint em `bootstrap();`; o código foi ajustado para `
 
 ## Observações
 
-Nenhum módulo de domínio, autenticação, Prisma, schema ou migration foi criado nesta fase.
+Nenhum módulo de domínio, autenticação, schema Supabase ou migration foi criado nesta fase.

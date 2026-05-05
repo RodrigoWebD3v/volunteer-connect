@@ -4,7 +4,7 @@
 
 - **Frontend app**: SvelteKit routes for public browsing, auth, volunteer dashboard, NGO dashboard, and admin basics.
 - **API app**: NestJS modules for auth, users, NGOs, opportunities, applications, events, and participations.
-- **Database**: Prisma-managed relational schema.
+- **Database**: Supabase-managed PostgreSQL schema with SQL migrations/scripts versioned in the repo.
 - **Auth layer**: JWT strategy, role guards, password hashing, and route authorization.
 - **Shared contracts**: Request/response DTOs and validation rules owned by the backend.
 
@@ -20,10 +20,9 @@
 ## Build Order
 
 1. Project setup and tooling.
-2. Database schema and migrations.
+2. Supabase schema and SQL migrations/scripts.
 3. Auth and roles.
 4. NGO management.
 5. Opportunities and applications.
 6. Events, participations, and dashboards.
 7. Accessibility, polish, and verification.
-

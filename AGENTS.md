@@ -5,13 +5,13 @@
 
 Volunteer Connect is a web platform for connecting volunteers with NGOs that need help. It centralizes volunteer opportunities, NGO profiles, events, applications, participation records, and basic communication so people who want to help can find real opportunities without confusion.
 
-The project is currently at initialization: the repository has only a README, while GitHub issues and project documents define the intended MVP around NestJS, SvelteKit, Prisma, authentication, NGO CRUD, and an initial volunteer opportunity data model.
+The project is currently at initialization: the repository has only a README, while GitHub issues and project documents define the intended MVP around NestJS, SvelteKit, Supabase remoto, authentication, NGO CRUD, and an initial volunteer opportunity data model.
 
 **Core Value:** Volunteers can find a trustworthy opportunity and NGOs can organize participation in one simple, accessible place.
 
 ### Constraints
 
-- **Tech stack**: NestJS backend, SvelteKit frontend, TypeScript, Prisma ORM - already expressed in GitHub issues.
+- **Tech stack**: NestJS backend, SvelteKit frontend, TypeScript, Supabase remoto, and Supabase client/SQL migrations.
 - **Project type**: Academic software engineering project - documentation, requirements, and traceability matter alongside implementation.
 - **Scope**: MVP should prioritize the core matching and participation flow before advanced social features.
 - **UX**: Interface must be simple, intuitive, and accessible for volunteers and NGO users with different technical comfort levels.
@@ -24,7 +24,7 @@ The project is currently at initialization: the repository has only a README, wh
 ## Recommendation
 - **Frontend**: SvelteKit with TypeScript for the web app.
 - **Backend**: NestJS with TypeScript for HTTP APIs, validation, auth guards, and modular domain boundaries.
-- **Database access**: Prisma ORM with migrations.
+- **Database access**: Supabase client for application access and SQL migrations/scripts for schema evolution.
 - **Database**: Supabase remoto, usando PostgreSQL gerenciado para integridade relacional entre usuários, ONGs, oportunidades, candidaturas, eventos e histórico de participação.
 - **Auth**: JWT access tokens with role-based guards for volunteer, NGO, and admin capabilities.
 - **Quality**: ESLint, Prettier, unit tests for services, and integration tests for core API flows.
@@ -52,7 +52,7 @@ Architecture not yet mapped. Follow existing patterns found in the codebase.
 ## Project Skills
 
 - `.codex/skills/po-business-rule-analyst/SKILL.md`: use para demandas de regra de negocio, refinamento funcional ou criacao de issue. A skill atua como P.O./analista de negocio, cria historia de usuario, separa analise de negocio e tecnica, identifica padroes/funcoes existentes reutilizaveis e registra a issue no GitHub em portugues.
-- `.codex/skills/security-code-review/SKILL.md`: use sempre que codigo, dependencia, endpoint, auth, autorizacao, banco, Supabase, Prisma, upload ou configuracao sensivel for criado/alterado, e antes de PR/merge/build. A skill atua como profissional de cybersecurity, classifica severidade, recomenda correcao pratica e bloqueia riscos criticos ou altos nao mitigados.
+- `.codex/skills/security-code-review/SKILL.md`: use sempre que codigo, dependencia, endpoint, auth, autorizacao, banco, Supabase, upload ou configuracao sensivel for criado/alterado, e antes de PR/merge/build. A skill atua como profissional de cybersecurity, classifica severidade, recomenda correcao pratica e bloqueia riscos criticos ou altos nao mitigados.
 <!-- GSD:skills-end -->
 
 <!-- GSD:workflow-start source:GSD defaults -->

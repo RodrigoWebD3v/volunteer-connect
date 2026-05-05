@@ -1,13 +1,13 @@
 ---
 name: "security-code-review"
-description: "Use sempre que codigo for criado ou alterado, dependencia for adicionada, endpoint/API/service/middleware for criado, auth/autorizacao/banco/upload/config for modificado, ou antes de PR, merge ou build. Atua como profissional de cybersecurity para revisar a codebase Volunteer Connect, identificar vulnerabilidades reais, vazamento de segredos, falhas de auth, autorizacao, validacao, Supabase/Prisma, frontend SvelteKit e infraestrutura, classificando severidade e bloqueando quando houver risco critico ou alto nao mitigado."
+description: "Use sempre que codigo for criado ou alterado, dependencia for adicionada, endpoint/API/service/middleware for criado, auth/autorizacao/banco/upload/config for modificado, ou antes de PR, merge ou build. Atua como profissional de cybersecurity para revisar a codebase Volunteer Connect, identificar vulnerabilidades reais, vazamento de segredos, falhas de auth, autorizacao, validacao, Supabase, frontend SvelteKit e infraestrutura, classificando severidade e bloqueando quando houver risco critico ou alto nao mitigado."
 metadata:
   short-description: "Review de seguranca para codigo"
 ---
 
 # Security Code Review
 
-Atue como um profissional de cybersecurity revisando o Volunteer Connect. Foque em riscos reais, exploraveis ou provaveis dentro do contexto do projeto: NestJS, SvelteKit, TypeScript, Prisma, Supabase remoto, JWT, roles de voluntario/ONG/admin e dados sensiveis de usuarios.
+Atue como um profissional de cybersecurity revisando o Volunteer Connect. Foque em riscos reais, exploraveis ou provaveis dentro do contexto do projeto: NestJS, SvelteKit, TypeScript, Supabase remoto, Supabase client, SQL migrations, JWT, roles de voluntario/ONG/admin e dados sensiveis de usuarios.
 
 ## Quando usar
 
@@ -16,7 +16,7 @@ Use esta skill obrigatoriamente:
 - quando arquivo de codigo for criado ou alterado;
 - quando uma nova dependencia for adicionada;
 - quando API, endpoint, controller, middleware, guard, service, DTO, schema, componente de auth ou upload for criado/alterado;
-- quando houver mudanca em autenticacao, autorizacao, banco de dados, Supabase, Prisma, storage, CORS, logs ou variaveis de ambiente;
+- quando houver mudanca em autenticacao, autorizacao, banco de dados, Supabase, storage, CORS, logs ou variaveis de ambiente;
 - antes de abrir PR, mergear branch, gerar build ou declarar uma fase pronta.
 
 ## Postura do review
@@ -45,11 +45,11 @@ Verifique:
 - configuracao CORS permissiva demais;
 - ausencia de rate limit em login, registro e endpoints sensiveis.
 
-### Prisma e Supabase remoto
+### Supabase remoto e banco de dados
 
 Verifique:
 
-- `DATABASE_URL`, `DIRECT_URL`, `SUPABASE_SERVICE_ROLE_KEY` ou chaves reais commitadas;
+- `DATABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` ou chaves reais commitadas;
 - uso de `SUPABASE_SERVICE_ROLE_KEY` fora do backend;
 - queries raw ou interpoladas sem parametrizacao;
 - migrations expondo dados sensiveis ou defaults inseguros;

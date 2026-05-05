@@ -9,7 +9,7 @@
 | Phase | Name | Goal | Requirements | UI hint |
 |-------|------|------|--------------|---------|
 | 1 | Project Foundation | Establish runnable backend/frontend workspace and quality commands. | SETUP-01, SETUP-02, SETUP-03 | yes |
-| 2 | Data Model Foundation | Define Prisma schema, migrations, and seed/insertion validation. | DATA-01..DATA-07 | no |
+| 2 | Data Model Foundation | Define Supabase schema, SQL migrations/scripts, and seed/insertion validation. | DATA-01..DATA-07 | no |
 | 3 | Authentication And Roles | Implement registration, login, JWT protection, logout, and role enforcement. | AUTH-01..AUTH-06 | yes |
 | 4 | NGO Profiles | Let NGO users manage profiles and users browse NGO details. | NGO-01..NGO-05 | yes |
 | 5 | Opportunities | Let NGOs publish opportunities and volunteers browse/search them. | OPP-01..OPP-05 | yes |
@@ -40,7 +40,7 @@
 **Requirements:** DATA-01, DATA-02, DATA-03, DATA-04, DATA-05, DATA-06, DATA-07
 
 **Success Criteria:**
-1. Prisma schema includes users, volunteers, NGOs, opportunities, applications, events, and participations.
+1. Supabase schema includes users, volunteers, NGOs, opportunities, applications, events, and participations.
 2. Migrations run against the configured Supabase development database.
 3. Seed or insertion test proves the core relationships work.
 4. Schema supports volunteer, NGO, and admin roles without duplicating account identity.

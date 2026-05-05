@@ -6,7 +6,7 @@
 <domain>
 ## Phase Boundary
 
-Establish a runnable full-stack project foundation with backend NestJS, frontend SvelteKit, TypeScript, linting, formatting, documented local commands, and a smooth local development experience. This phase does not implement domain features, authentication, Prisma models, or database schema beyond any local infrastructure needed to make the workspace runnable.
+Establish a runnable full-stack project foundation with backend NestJS, frontend SvelteKit, TypeScript, linting, formatting, documented local commands, and a smooth local development experience. This phase does not implement domain features, authentication, Supabase models, or database schema beyond any local infrastructure needed to make the workspace runnable.
 
 </domain>
 
