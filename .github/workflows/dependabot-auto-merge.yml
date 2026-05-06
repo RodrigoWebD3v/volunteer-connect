@@ -1,0 +1,98 @@
+name: Dependabot Auto Merge
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: ["dependabot/integration"]
+
+permissions:
+  checks: read
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: dependabot-auto-merge-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  merge-dependabot:
+    name: Merge Dependabot into integration
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    if: >-
+      github.actor == 'dependabot[bot]' &&
+      github.event.pull_request.base.ref == 'dependabot/integration' &&
+      github.event.pull_request.draft == false
+
+    steps:
+      - name: Wait for required checks
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const requiredChecks = [
+              'Verify',
+              'Analyze JavaScript/TypeScript',
+              'Dependency Review',
+              'Gitleaks',
+            ];
+            const allowed = new Set(['success', 'neutral', 'skipped']);
+            const { owner, repo } = context.repo;
+            const pr = context.payload.pull_request;
+            const deadline = Date.now() + 25 * 60 * 1000;
+
+            while (Date.now() < deadline) {
+              const { data } = await github.rest.checks.listForRef({
+                owner,
+                repo,
+                ref: pr.head.sha,
+                per_page: 100,
+              });
+
+              const latestByName = new Map();
+              for (const run of data.check_runs) {
+                const current = latestByName.get(run.name);
+                if (!current || new Date(run.started_at || run.created_at) > new Date(current.started_at || current.created_at)) {
+                  latestByName.set(run.name, run);
+                }
+              }
+
+              const missing = requiredChecks.filter((name) => !latestByName.has(name));
+              const pending = requiredChecks.filter((name) => {
+                const run = latestByName.get(name);
+                return run && run.status !== 'completed';
+              });
+              const failed = requiredChecks.filter((name) => {
+                const run = latestByName.get(name);
+                return run && run.status === 'completed' && !allowed.has(run.conclusion);
+              });
+
+              if (failed.length > 0) {
+                core.setFailed(`Checks failed: ${failed.join(', ')}`);
+                return;
+              }
+
+              if (missing.length === 0 && pending.length === 0) {
+                core.info('All required checks passed.');
+                return;
+              }
+
+              core.info(`Waiting for checks. Missing: ${missing.join(', ') || 'none'}. Pending: ${pending.join(', ') || 'none'}.`);
+              await new Promise((resolve) => setTimeout(resolve, 30000));
+            }
+
+            core.setFailed('Timed out waiting for required checks.');
+
+      - name: Merge pull request
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const pr = context.payload.pull_request;
+
+            await github.rest.pulls.merge({
+              owner,
+              repo,
+              pull_number: pr.number,
+              merge_method: 'squash',
+              commit_title: pr.title,
+            });
