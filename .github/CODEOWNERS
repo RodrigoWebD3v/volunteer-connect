@@ -1,0 +1,9 @@
+# Responsavel padrao pelo repositorio.
+* @RodrigoWebD3v
+
+# Mudancas sensiveis sempre exigem revisao do owner.
+/.github/ @RodrigoWebD3v
+/.codex/skills/ @RodrigoWebD3v
+/backend/src/ @RodrigoWebD3v
+/frontend/src/ @RodrigoWebD3v
+/.env.example @RodrigoWebD3v
