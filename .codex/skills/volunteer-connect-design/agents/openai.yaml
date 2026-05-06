@@ -1,0 +1,7 @@
+interface:
+  display_name: "Design Volunteer Connect"
+  short_description: "Direcao visual Airbnb + Notion"
+  default_prompt: "Use $volunteer-connect-design para criar ou revisar uma UI do Volunteer Connect."
+
+policy:
+  allow_implicit_invocation: true

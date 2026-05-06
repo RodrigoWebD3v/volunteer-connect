@@ -53,6 +53,7 @@ Architecture not yet mapped. Follow existing patterns found in the codebase.
 
 - `.codex/skills/po-business-rule-analyst/SKILL.md`: use para demandas de regra de negocio, refinamento funcional ou criacao de issue. A skill atua como P.O./analista de negocio, cria historia de usuario, separa analise de negocio e tecnica, identifica padroes/funcoes existentes reutilizaveis e registra a issue no GitHub em portugues.
 - `.codex/skills/security-code-review/SKILL.md`: use sempre que codigo, dependencia, endpoint, auth, autorizacao, banco, Supabase, upload ou configuracao sensivel for criado/alterado, e antes de PR/merge/build. A skill atua como profissional de cybersecurity, classifica severidade, recomenda correcao pratica e bloqueia riscos criticos ou altos nao mitigados.
+- `.codex/skills/volunteer-connect-design/SKILL.md`: use sempre que criar ou alterar UI, layout, componente visual, fluxo frontend, dashboard, area logada, design spec ou issue de UX. A skill define Airbnb como base visual publica e Notion/Cal.com como complemento operacional para dashboards e areas logadas.
 <!-- GSD:skills-end -->
 
 <!-- GSD:workflow-start source:GSD defaults -->
