@@ -12,6 +12,7 @@ frontend/.vite/
 coverage/
 backend/coverage/
 frontend/coverage/
+*.tsbuildinfo
 
 # Ambiente local e segredos
 .env
