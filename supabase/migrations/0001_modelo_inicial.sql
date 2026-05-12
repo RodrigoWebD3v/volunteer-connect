@@ -13,8 +13,4 @@
 -- - eventos
 -- - participacoes
 
-begin;
-
 -- Placeholder intencional da T1: estrutura local criada para receber o schema.
-
-commit;
