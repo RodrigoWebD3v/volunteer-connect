@@ -1,4 +1,12 @@
-import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Headers,
+  HttpCode,
+  HttpStatus,
+  Post,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import {
   EnviarRecuperacaoSenhaDto,
@@ -35,6 +43,20 @@ export class AuthController {
         email: user.email,
       },
     };
+  }
+
+  @Get('me')
+  @HttpCode(HttpStatus.OK)
+  async me(@Headers('authorization') authorization?: string) {
+    const token = authorization?.startsWith('Bearer ')
+      ? authorization.slice(7)
+      : undefined;
+
+    if (!token) {
+      throw new Error('Authorization Bearer token ausente');
+    }
+
+    return this.authService.obterSessaoAtual(token);
   }
 
   @Post('login')

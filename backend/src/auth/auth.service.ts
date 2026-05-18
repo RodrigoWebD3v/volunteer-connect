@@ -48,6 +48,78 @@ export class AuthService {
     return data.user;
   }
 
+  async obterSessaoAtual(accessToken: string) {
+    const { data: authData, error: authError } =
+      await this.supabaseService.adminClient.auth.getUser(accessToken);
+
+    if (authError || !authData.user) {
+      throw new Error(authError?.message ?? 'Token inválido ou expirado');
+    }
+
+    const { data: usuario, error: usuarioError } =
+      await this.supabaseService.adminClient
+        .from('usuarios')
+        .select('id,nome_completo,email,papel,ativo')
+        .eq('id', authData.user.id)
+        .maybeSingle();
+
+    if (usuarioError) {
+      throw new Error(
+        `Falha ao consultar usuario local: ${usuarioError.message}`,
+      );
+    }
+
+    if (!usuario) {
+      return {
+        authUser: authData.user,
+        usuario: null,
+        perfil: null,
+      };
+    }
+
+    if (usuario.papel === 'voluntario') {
+      const { data: perfilVoluntario, error: perfilError } =
+        await this.supabaseService.adminClient
+          .from('perfis_voluntarios')
+          .select('id,usuario_id,telefone,cidade,estado,biografia')
+          .eq('usuario_id', usuario.id)
+          .maybeSingle();
+
+      if (perfilError) {
+        throw new Error(
+          `Falha ao consultar perfil de voluntario: ${perfilError.message}`,
+        );
+      }
+
+      return {
+        authUser: authData.user,
+        usuario,
+        perfil: perfilVoluntario,
+      };
+    }
+
+    const { data: perfilOng, error: perfilError } =
+      await this.supabaseService.adminClient
+        .from('perfis_ongs')
+        .select(
+          'id,usuario_gestor_id,nome_fantasia,cnpj,descricao,site_url,cidade,estado,verificada',
+        )
+        .eq('usuario_gestor_id', usuario.id)
+        .maybeSingle();
+
+    if (perfilError) {
+      throw new Error(
+        `Falha ao consultar perfil de ONG: ${perfilError.message}`,
+      );
+    }
+
+    return {
+      authUser: authData.user,
+      usuario,
+      perfil: perfilOng,
+    };
+  }
+
   private async criarRegistrosLocaisPosCadastro(
     userId: string,
     input: RegistrarUsuarioInput,
