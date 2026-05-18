@@ -64,6 +64,9 @@ npm run dev:frontend
 
 ## Qualidade
 
+Consulte também o checklist operacional em `docs/qualidade-checklist.md`.
+
+
 Antes de commitar, rode a verificação completa:
 
 ```powershell
@@ -80,6 +83,10 @@ npm test
 ```
 
 O backend e o frontend também continuam executáveis de forma independente com `npm --prefix backend ...` e `npm --prefix frontend ...`.
+
+## Fluxo local
+
+Para um guia passo a passo de setup, execução e validação local, consulte `docs/fluxo-desenvolvimento-local.md`.
 
 ## Banco de dados
 
