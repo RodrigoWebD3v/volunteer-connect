@@ -7,8 +7,10 @@ Os arquivos desta fase ainda nao foram aplicados no Supabase remoto. Eles existe
 ## Arquivos
 
 - `schema-proposto.md`: descricao inicial das entidades, relacionamentos e regras esperadas.
+- `entidades-regras-fase2.md`: detalhamento objetivo das entidades e regras de integridade da Fase 2.
 - `../../supabase/migrations/0001_modelo_inicial.sql`: proposta local da primeira migration SQL.
 - `../../supabase/seed/0001_dados_exemplo.sql`: proposta local de dados ficticios para validar relacionamentos.
+- `execucao-futura-fase2.md`: plano operacional e guardrails para execução remota segura de migration e seed.
 
 ## Guardrails
 
@@ -20,4 +22,4 @@ Os arquivos desta fase ainda nao foram aplicados no Supabase remoto. Eles existe
 
 ## Status da Fase 2
 
-Esta etapa cria apenas a estrutura local de documentacao e SQL. A escrita detalhada do schema, da migration e do seed sera refinada nas proximas tarefas da Fase 2.
+Esta etapa ja contem uma primeira versao detalhada de schema, migration e seed locais para revisao tecnica. A aplicacao em ambiente remoto continua dependente de revisao e autorizacao explicita.
