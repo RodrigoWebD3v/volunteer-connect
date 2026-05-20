@@ -98,6 +98,10 @@ Representa dados institucionais de uma ONG e seu status de analise.
 | `razao_social` | sim | nao | Razao social da instituicao. |
 | `logo_storage_path` | sim | nao | Caminho da logo no Supabase Storage. |
 | `status_analise` | sim | nao | Status: `pendente`, `aprovado` ou `reprovado`. |
+| `motivo_reprovacao` | nao | nao | Motivo informado pelo admin quando a ONG e reprovada. |
+| `analisado_por_usuario_id` | nao | nao | Admin que aprovou ou reprovou a ONG. |
+| `analisado_em` | nao | nao | Data da ultima analise administrativa. |
+| `reenviado_em` | nao | nao | Data do ultimo reenvio para analise pela ONG. |
 | `criado_em` | sim | nao | Data de criacao do perfil. |
 | `atualizado_em` | sim | nao | Data da ultima atualizacao. |
 
@@ -109,6 +113,11 @@ Relacionamentos e regras:
 - `cnpj` deve ser unico.
 - `status_analise` aceita somente `pendente`, `aprovado` ou `reprovado`.
 - ONG recem-cadastrada inicia como `pendente`.
+- `motivo_reprovacao` e obrigatorio quando `status_analise = reprovado`.
+- `motivo_reprovacao` deve ter no maximo 2.000 caracteres.
+- `analisado_por_usuario_id` referencia `usuarios.id` de uma conta admin.
+- `analisado_em` deve ser preenchido ao aprovar ou reprovar.
+- `reenviado_em` deve ser preenchido quando uma ONG reprovada reenviar o perfil para nova analise.
 - ONG `pendente` ou `reprovado` nao pode publicar oportunidades.
 - Apenas ONG com `status_analise = aprovado` e `usuarios.conta_suspensa = false` pode publicar oportunidades.
 - ONG reprovada pode corrigir dados e reenviar para analise, voltando para `pendente`, se a conta nao estiver suspensa.
