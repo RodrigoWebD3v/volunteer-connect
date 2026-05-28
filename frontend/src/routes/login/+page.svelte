@@ -36,34 +36,20 @@
 			Ainda nao tem conta?
 			<a href={resolve('/cadastro')}>Criar conta</a>
 		</p>
+		<a class="helper" href={resolve('/auth/esqueci-senha')}>Esqueci minha senha</a>
 	</form>
-
-	<aside class="story-panel" aria-label="Contexto do Volunteer Connect">
-		<img
-			src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1200&q=80"
-			alt="Grupo de voluntarios organizando doacoes em uma mesa"
-		/>
-		<div class="story-copy">
-			<p class="eyebrow">Impacto local</p>
-			<h2>O proximo passo de ajuda precisa ser facil de encontrar.</h2>
-			<p>O Volunteer Connect aproxima pessoas, ONGs e oportunidades reais sem confusao.</p>
-		</div>
-	</aside>
 </section>
 
 <style>
 	.auth-page {
 		display: grid;
-		grid-template-columns: minmax(0, 520px);
-		gap: 32px;
-		align-items: center;
+		place-items: center;
 		justify-content: center;
 		min-height: calc(100vh - 76px);
 		padding: 32px clamp(16px, 5vw, 72px);
 	}
 
 	h1,
-	h2,
 	p {
 		margin-top: 0;
 	}
@@ -90,8 +76,7 @@
 		text-wrap: balance;
 	}
 
-	.form-heading p:not(.eyebrow),
-	.story-copy p:not(.eyebrow) {
+	.form-heading p:not(.eyebrow) {
 		margin-bottom: 0;
 		color: var(--color-body);
 		line-height: 1.55;
@@ -182,64 +167,5 @@
 		font-weight: 800;
 		text-decoration-thickness: 2px;
 		text-underline-offset: 4px;
-	}
-
-	.story-panel {
-		display: none;
-	}
-
-	@media (min-width: 920px) {
-		.auth-page {
-			grid-template-columns: minmax(380px, 470px) minmax(420px, 620px);
-			gap: clamp(40px, 6vw, 76px);
-			justify-content: space-between;
-		}
-
-		.story-panel {
-			position: relative;
-			display: grid;
-			align-content: end;
-			min-height: 620px;
-			overflow: hidden;
-			border-radius: 28px;
-			background: var(--color-surface-soft);
-		}
-
-		.story-panel img {
-			position: absolute;
-			inset: 0;
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-		}
-
-		.story-panel::after {
-			position: absolute;
-			inset: 0;
-			content: '';
-			background: linear-gradient(to top, oklch(20% 0.02 35 / 0.78), oklch(20% 0.02 35 / 0.08) 58%);
-		}
-
-		.story-copy {
-			position: relative;
-			z-index: 1;
-			display: grid;
-			gap: 12px;
-			max-width: 440px;
-			padding: 36px;
-			color: var(--color-canvas);
-		}
-
-		.story-copy .eyebrow,
-		.story-copy p:not(.eyebrow) {
-			color: oklch(96% 0.01 35);
-		}
-
-		.story-copy h2 {
-			margin: 0;
-			font-size: 2rem;
-			line-height: 1.12;
-			text-wrap: balance;
-		}
 	}
 </style>
