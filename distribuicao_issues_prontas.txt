@@ -1,0 +1,88 @@
+Distribuicao de issues prontas - Volunteer Connect
+Repositorio: https://github.com/RodrigoWebD3v/volunteer-connect
+Fonte: issues fechadas no GitHub, excluindo pull requests
+Total de issues distribuidas: 35
+Regra: divisao equilibrada entre 4 usuarios; sobras alocadas para Rodrigo Cardoso.
+Sorteio: ordem embaralhada com seed 20260528.
+
+Rodrigo Cardoso (11 issues)
+---------------------------
+#1 - [SETUP] Configurar ambiente inicial do projeto
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/1
+#5 - [SETUP] Inicializar frontend com SvelteKit
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/5
+#31 - [GSD][Fase 1][01-01][T1] Criar scaffold do backend
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/31
+#77 - [GSD][Fase 3][03-01][T2] Criar contrato SQL local de RLS inicial para usuários
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/77
+#7 - [GSD][Fase 1][Plano 01] Fundação do backend
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/7
+#42 - [GSD][Fase 2][02-01][T5] Documentar execução futura e guardrails de segurança
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/42
+#36 - [GSD][Fase 1][01-03][T2] Configurar exemplos de ambiente e gitignore
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/36
+#57 - [GSD][Fase 6][06-01][T1] Atualizar contrato do banco para inscrições
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/57
+#40 - [GSD][Fase 2][02-01][T3] Escrever migration SQL local proposta
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/40
+#59 - [GSD][Fase 6][06-01][T3] Implementar cancelamento e consulta do voluntário
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/59
+#33 - [GSD][Fase 1][01-02][T1] Criar scaffold do frontend
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/33
+
+Lemuel Felizardo (8 issues)
+---------------------------
+#38 - [GSD][Fase 2][02-01][T1] Criar estrutura local de documentação e SQL
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/38
+#78 - [GSD][Fase 3][03-01][T3] Criar módulo Supabase/Auth no backend
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/78
+#37 - [GSD][Fase 1][01-03][T3] Documentar fluxo local de desenvolvimento
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/37
+#50 - [GSD][Fase 5][05-01][T1] Atualizar contrato do banco para oportunidades
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/50
+#9 - [GSD][Fase 1][Plano 03] Fluxo local e documentação
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/9
+#6 - [DB] Criar tabela users
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/6
+#35 - [GSD][Fase 1][01-03][T1] Adicionar scripts npm na raiz
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/35
+#53 - [GSD][Fase 5][05-01][T4] Implementar encerramento automático de oportunidades
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/53
+
+Sergio Folchini (8 issues)
+--------------------------
+#58 - [GSD][Fase 6][06-01][T2] Criar módulo backend de inscrições
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/58
+#46 - [GSD][Fase 4][04-01][T4] Implementar regras de suspensão relacionadas à ONG
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/46
+#76 - [GSD][Fase 3][03-01][T1] Configurar dependências, ambiente e documentação de auth
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/76
+#3 - [DB] Modelar banco de dados inicial
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/3
+#45 - [GSD][Fase 4][04-01][T3] Implementar fluxo admin de análise de ONG
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/45
+#51 - [GSD][Fase 5][05-01][T2] Criar módulo backend de oportunidades
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/51
+#56 - [GSD][Fase 5][05-01][T7] Preparar contrato para inscrições da Fase 6
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/56
+#43 - [GSD][Fase 4][04-01][T1] Atualizar contrato do banco para análise de ONG
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/43
+
+Matheus Message (8 issues)
+--------------------------
+#34 - [GSD][Fase 1][01-02][T2] Verificar comandos de qualidade do frontend
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/34
+#8 - [GSD][Fase 1][Plano 02] Fundação do frontend
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/8
+#41 - [GSD][Fase 2][02-01][T4] Escrever seed SQL local de validação
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/41
+#44 - [GSD][Fase 4][04-01][T2] Criar módulo backend de ONGs
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/44
+#52 - [GSD][Fase 5][05-01][T3] Implementar listagem, detalhe e filtros públicos
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/52
+#60 - [GSD][Fase 6][06-01][T4] Implementar gestão de inscrições pela ONG
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/60
+#39 - [GSD][Fase 2][02-01][T2] Documentar entidades e regras do schema
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/39
+#32 - [GSD][Fase 1][01-01][T2] Verificar comandos de qualidade do backend
+https://github.com/RodrigoWebD3v/volunteer-connect/issues/32

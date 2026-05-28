@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Headers,
   HttpCode,
@@ -45,6 +46,14 @@ export class OngsController {
     );
   }
 
+  @Delete('minha')
+  @HttpCode(HttpStatus.OK)
+  removerMinhaOng(@Headers('authorization') authorization?: string) {
+    return this.ongsService.removerMinhaOng(
+      this.extrairBearerToken(authorization),
+    );
+  }
+
   @Get('admin/analises')
   @HttpCode(HttpStatus.OK)
   listarParaAnalise(
@@ -54,6 +63,18 @@ export class OngsController {
     return this.ongsService.listarParaAnalise(
       this.extrairBearerToken(authorization),
       status,
+    );
+  }
+
+  @Get('admin/analises/:id')
+  @HttpCode(HttpStatus.OK)
+  detalharParaAnalise(
+    @Headers('authorization') authorization: string | undefined,
+    @Param('id', new ParseUUIDPipe()) id: string,
+  ) {
+    return this.ongsService.detalharParaAnalise(
+      this.extrairBearerToken(authorization),
+      id,
     );
   }
 

@@ -3,7 +3,12 @@
 
 	let { form } = $props();
 
-	let tipoSelecionado = $derived(form?.tipo_conta ?? 'voluntario');
+	let tipoSelecionado = $state<'voluntario' | 'ong'>('voluntario');
+	let campos = $derived(form?.campos ?? {});
+
+	$effect(() => {
+		tipoSelecionado = form?.tipo_conta === 'ong' ? 'ong' : 'voluntario';
+	});
 </script>
 
 <svelte:head>
@@ -11,11 +16,16 @@
 </svelte:head>
 
 <section class="auth-page">
-	<form class="auth-card" method="POST" aria-label="Formulario de cadastro">
+	<form
+		class="auth-card"
+		method="POST"
+		enctype="multipart/form-data"
+		aria-label="Formulario de cadastro"
+	>
 		<div class="form-heading">
 			<p class="eyebrow">Cadastro</p>
 			<h1>Crie sua conta</h1>
-			<p>Escolha como quer participar agora. Depois completamos os dados do perfil.</p>
+			<p>Escolha como quer participar e informe os dados minimos para analise segura.</p>
 		</div>
 
 		{#if form?.sucesso}
@@ -31,7 +41,7 @@
 					type="radio"
 					name="tipo_conta"
 					value="voluntario"
-					checked={tipoSelecionado !== 'ong'}
+					bind:group={tipoSelecionado}
 				/>
 				<span class="radio-copy">
 					<strong>Voluntario</strong>
@@ -39,7 +49,7 @@
 				</span>
 			</label>
 			<label class="radio-option">
-				<input type="radio" name="tipo_conta" value="ong" checked={tipoSelecionado === 'ong'} />
+				<input type="radio" name="tipo_conta" value="ong" bind:group={tipoSelecionado} />
 				<span class="radio-copy">
 					<strong>ONG</strong>
 					<small>Publicar oportunidades apos analise.</small>
@@ -49,12 +59,140 @@
 
 		<label>
 			<span>Email</span>
-			<input name="email" type="email" autocomplete="email" value={form?.email ?? ''} required />
+			<input
+				name="email"
+				type="email"
+				autocomplete="email"
+				value={form?.email ?? ''}
+				aria-invalid={campos.email ? 'true' : undefined}
+				aria-describedby={campos.email ? 'email-erro' : undefined}
+				required
+			/>
+			{#if campos.email}
+				<small id="email-erro" class="field-error">{campos.email}</small>
+			{/if}
+		</label>
+
+		<label>
+			<span>Nome completo do responsavel</span>
+			<input
+				name="nome_completo"
+				autocomplete="name"
+				value={form?.nome_completo ?? ''}
+				aria-invalid={campos.nome_completo ? 'true' : undefined}
+				aria-describedby={campos.nome_completo ? 'nome-completo-erro' : undefined}
+				required
+			/>
+			{#if campos.nome_completo}
+				<small id="nome-completo-erro" class="field-error">{campos.nome_completo}</small>
+			{/if}
+		</label>
+
+		{#if tipoSelecionado !== 'ong'}
+			<label>
+				<span>CPF</span>
+				<input
+					name="cpf"
+					inputmode="numeric"
+					minlength="11"
+					maxlength="14"
+					value={form?.cpf ?? ''}
+					aria-invalid={campos.cpf ? 'true' : undefined}
+					aria-describedby={campos.cpf ? 'cpf-erro' : undefined}
+					required
+				/>
+				{#if campos.cpf}
+					<small id="cpf-erro" class="field-error">{campos.cpf}</small>
+				{/if}
+			</label>
+		{:else}
+			<label>
+				<span>Nome fantasia da ONG</span>
+				<input
+					name="nome_fantasia"
+					value={form?.nome_fantasia ?? ''}
+					aria-invalid={campos.nome_fantasia ? 'true' : undefined}
+					aria-describedby={campos.nome_fantasia ? 'nome-fantasia-erro' : undefined}
+					required
+				/>
+				{#if campos.nome_fantasia}
+					<small id="nome-fantasia-erro" class="field-error">{campos.nome_fantasia}</small>
+				{/if}
+			</label>
+
+			<label>
+				<span>CNPJ</span>
+				<input
+					name="cnpj"
+					inputmode="numeric"
+					minlength="14"
+					maxlength="18"
+					value={form?.cnpj ?? ''}
+					aria-invalid={campos.cnpj ? 'true' : undefined}
+					aria-describedby={campos.cnpj ? 'cnpj-erro' : undefined}
+					required
+				/>
+				{#if campos.cnpj}
+					<small id="cnpj-erro" class="field-error">{campos.cnpj}</small>
+				{/if}
+			</label>
+
+			<label>
+				<span>Logo da ONG</span>
+				<input
+					name="logo"
+					type="file"
+					accept="image/png,image/jpeg,image/webp"
+					aria-invalid={campos.logo ? 'true' : undefined}
+					aria-describedby={campos.logo ? 'logo-erro' : undefined}
+					required
+				/>
+				{#if campos.logo}
+					<small id="logo-erro" class="field-error">{campos.logo}</small>
+				{/if}
+			</label>
+
+			<label>
+				<span>Descricao da ONG</span>
+				<textarea name="descricao_ong" rows="4">{form?.descricao_ong ?? ''}</textarea>
+			</label>
+		{/if}
+
+		<div class="inline-fields">
+			<label>
+				<span>Cidade</span>
+				<input name="cidade" autocomplete="address-level2" value={form?.cidade ?? ''} />
+			</label>
+			<label>
+				<span>UF</span>
+				<input
+					name="estado"
+					autocomplete="address-level1"
+					maxlength="2"
+					value={form?.estado ?? ''}
+				/>
+			</label>
+		</div>
+
+		<label>
+			<span>Telefone</span>
+			<input name="telefone" autocomplete="tel" value={form?.telefone ?? ''} />
 		</label>
 
 		<label>
 			<span>Senha</span>
-			<input name="senha" type="password" autocomplete="new-password" minlength="8" required />
+			<input
+				name="senha"
+				type="password"
+				autocomplete="new-password"
+				minlength="8"
+				aria-invalid={campos.senha ? 'true' : undefined}
+				aria-describedby={campos.senha ? 'senha-erro' : undefined}
+				required
+			/>
+			{#if campos.senha}
+				<small id="senha-erro" class="field-error">{campos.senha}</small>
+			{/if}
 		</label>
 
 		<label>
@@ -64,8 +202,13 @@
 				type="password"
 				autocomplete="new-password"
 				minlength="8"
+				aria-invalid={campos.confirmar_senha ? 'true' : undefined}
+				aria-describedby={campos.confirmar_senha ? 'confirmar-senha-erro' : undefined}
 				required
 			/>
+			{#if campos.confirmar_senha}
+				<small id="confirmar-senha-erro" class="field-error">{campos.confirmar_senha}</small>
+			{/if}
 		</label>
 
 		<button type="submit">Criar conta</button>
@@ -213,7 +356,10 @@
 	}
 
 	input[type='email'],
-	input[type='password'] {
+	input[type='password'],
+	input:not([type]),
+	input[type='file'],
+	textarea {
 		width: 100%;
 		min-height: 48px;
 		padding: 12px 14px;
@@ -228,10 +374,35 @@
 	}
 
 	input[type='email']:focus-visible,
-	input[type='password']:focus-visible {
+	input[type='password']:focus-visible,
+	input:not([type]):focus-visible,
+	input[type='file']:focus-visible,
+	textarea:focus-visible {
 		border-color: var(--color-primary);
 		outline: 3px solid oklch(72% 0.18 18 / 0.3);
 		outline-offset: 2px;
+	}
+
+	input[aria-invalid='true'] {
+		border-color: oklch(54% 0.2 22);
+		background: oklch(98% 0.025 22);
+	}
+
+	.field-error {
+		color: oklch(38% 0.16 18);
+		font-size: 0.84rem;
+		font-weight: 800;
+		line-height: 1.35;
+	}
+
+	textarea {
+		resize: vertical;
+	}
+
+	.inline-fields {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) 92px;
+		gap: 12px;
 	}
 
 	button {

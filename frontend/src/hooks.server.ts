@@ -4,6 +4,7 @@ import type { Handle } from '@sveltejs/kit';
 export const handle: Handle = async ({ event, resolve }) => {
 	event.locals.supabase = createSupabaseServerClient(event.cookies);
 	event.locals.usuarioAuth = null;
+	event.locals.sessaoAtual = null;
 
 	if (event.locals.supabase) {
 		const {

@@ -36,7 +36,7 @@
 			Ainda nao tem conta?
 			<a href={resolve('/cadastro')}>Criar conta</a>
 		</p>
-		<a class="helper" href={resolve('/auth/esqueci-senha')}>Esqueci minha senha</a>
+		<a class="helper" href="/auth/esqueci-senha">Esqueci minha senha</a>
 	</form>
 </section>
 

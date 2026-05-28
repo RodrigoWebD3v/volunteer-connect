@@ -4,9 +4,15 @@ import {
   IsOptional,
   IsString,
   IsUrl,
+  Matches,
   MinLength,
   ValidateIf,
 } from 'class-validator';
+import { Transform } from 'class-transformer';
+
+function emptyStringToUndefined({ value }: { value: unknown }) {
+  return typeof value === 'string' && value.trim() === '' ? undefined : value;
+}
 
 export class RegistrarDto {
   @IsString()
@@ -46,13 +52,23 @@ export class RegistrarDto {
   @IsString()
   cnpj?: string;
 
+  @ValidateIf((o: RegistrarDto) => o.tipoCadastro === 'voluntario')
+  @IsString()
+  @Matches(/^\d{11}$/)
+  cpf?: string;
+
   @IsOptional()
   @IsString()
   descricaoOng?: string;
 
   @IsOptional()
+  @Transform(emptyStringToUndefined)
   @IsUrl({ require_tld: false })
   siteUrl?: string;
+
+  @ValidateIf((o: RegistrarDto) => o.tipoCadastro === 'ong')
+  @IsString()
+  logoDataUrl?: string;
 }
 
 export class LoginDto {
@@ -73,6 +89,7 @@ export class EnviarRecuperacaoSenhaDto {
   email!: string;
 
   @IsOptional()
+  @Transform(emptyStringToUndefined)
   @IsUrl({ require_tld: false })
   redirectTo?: string;
 }

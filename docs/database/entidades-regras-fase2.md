@@ -1,67 +1,54 @@
-# Fase 2 — Entidades e Regras do Schema
+# Entidades e regras de integridade
 
-Status: proposta local para revisão técnica (não aplicada em Supabase remoto).
-
-## Entidades
+Este documento resume o contrato atual do modelo de dados usado pelo backend.
 
 ## 1) `usuarios`
-- Representa a conta principal da plataforma.
-- Campos-chave: `email` único, `papel` (`voluntario`, `ong`, `admin`), `ativo`.
 
-Regras:
-- Cada conta deve possuir exatamente um papel principal.
-- Email deve ser único no sistema.
+- Espelha o usuario do Supabase Auth.
+- `papel` aceita `voluntario`, `ong` ou `admin`.
+- `conta_suspensa` bloqueia novas acoes sensiveis sem apagar historico.
+- Credenciais e senhas ficam no Supabase Auth, nao nesta tabela.
 
 ## 2) `perfis_voluntarios`
-- Extensão 1:1 de `usuarios` para dados de voluntário.
 
-Regras:
-- `usuario_id` é único (um perfil por conta).
-- Deve referenciar usuário existente.
+- Um perfil por `usuario_id`.
+- CPF e unico quando preenchido.
+- CPF e telefone nao devem aparecer em respostas publicas.
 
 ## 3) `perfis_ongs`
-- Extensão 1:1 do usuário gestor da ONG.
 
-Regras:
-- `usuario_gestor_id` é único.
-- `cnpj` é único.
-- ONG pode ser marcada como `verificada`.
+- Um perfil por `usuario_gestor_id`.
+- CNPJ e unico.
+- `status_analise` aceita `pendente`, `aprovado` ou `reprovado`.
+- ONG reprovada exige `motivo_reprovacao`.
+- Apenas ONG aprovada e nao suspensa pode publicar oportunidades.
 
 ## 4) `oportunidades`
-- Oportunidades publicadas por ONGs.
 
-Regras:
-- Cada oportunidade pertence a uma ONG existente.
-- `vagas` deve ser maior que zero.
-- `data_fim` não pode ser anterior a `data_inicio`.
-- Estado controlado por `status` (`rascunho`, `publicada`, `encerrada`).
+- Pertence a `perfil_ong_id`.
+- Campos principais: `titulo`, `descricao`, `tipo_atividade`, `cidade`, `estado`, `data_inicio`, `data_fim`, `prazo_inscricao`, `quantidade_vagas`, `status`.
+- `status` aceita `rascunho`, `publicada`, `encerrada` ou `cancelada`.
+- `quantidade_vagas` deve ser maior que zero.
+- `data_fim` deve ser maior ou igual a `data_inicio`.
+- `prazo_inscricao` deve ser menor ou igual a `data_inicio`.
 
 ## 5) `inscricoes`
-- Candidaturas de voluntários para oportunidades.
 
-Regras:
-- Relação obrigatória com oportunidade e voluntário.
-- Deve existir no máximo uma inscrição por `(oportunidade_id, voluntario_id)`.
-- Estado controlado por `status` (`pendente`, `aprovada`, `rejeitada`, `cancelada`).
+- Deve existir no maximo uma inscricao por `(oportunidade_id, voluntario_usuario_id)`.
+- `status` aceita `pendente`, `aprovada`, `reprovada` ou `cancelada`.
+- Apenas inscricoes `aprovada` consomem vaga.
+- Aprovar inscricao usa a funcao `aprovar_inscricao_com_vaga` para controlar capacidade.
 
-## 6) `eventos`
-- Atividades agendadas vinculadas a oportunidades.
+## 6) `presencas`
 
-Regras:
-- Deve pertencer a uma oportunidade.
-- `fim_em` não pode ser anterior a `inicio_em`.
-- Estado controlado por `status` (`agendado`, `realizado`, `cancelado`).
-
-## 7) `participacoes`
-- Histórico de presença/engajamento do voluntário.
-
-Regras:
-- Relaciona voluntário e oportunidade; `evento_id` é opcional.
-- `horas_voluntariadas` não pode ser negativa.
-- Estado controlado por `status` (`confirmada`, `presente`, `ausente`, `justificada`).
+- Uma presenca por `inscricao_id`.
+- `status` aceita `presente`, `ausente` ou `cancelada`.
+- Presenca exige inscricao aprovada.
+- Presenca so pode ser registrada apos conclusao da oportunidade.
+- ONG so pode registrar presenca em oportunidades proprias.
 
 ## Regras transversais
 
-- Todos os dados de exemplo devem ser fictícios.
-- Chaves/segredos nunca devem ser registrados em SQL/docs versionados.
-- Aplicação no Supabase remoto só com revisão explícita.
+- Backend deve checar autenticacao, papel, suspensao e ownership antes de acoes sensiveis.
+- Dados sensiveis nao devem aparecer em endpoints publicos.
+- O seed versionado deve usar apenas dados ficticios em dominios `example.org` ou `example.com`.

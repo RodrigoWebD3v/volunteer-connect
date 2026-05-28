@@ -19,9 +19,23 @@
 		</a>
 
 		<nav class="nav" aria-label="Navegacao principal">
-			<a href={resolve('/')}>Inicio</a>
+			<a href={resolve('/')}>Oportunidades</a>
 			{#if data.usuario}
 				<span class="user-email">{data.usuario.email}</span>
+				{#if data.usuario.papel === 'voluntario'}
+					<a href={resolve('/minhas-inscricoes')}>Minhas inscricoes</a>
+					<a href={resolve('/minhas-presencas')}>Minhas presencas</a>
+				{:else if data.usuario.papel === 'ong'}
+					{#if data.usuario.perfil?.status_analise === 'aprovado'}
+						<a href={resolve('/ong/oportunidades')}>Painel da ONG</a>
+					{:else if data.usuario.perfil?.status_analise === 'reprovado'}
+						<a href={resolve('/ong/analise-reprovada')}>Analise da ONG</a>
+					{:else}
+						<a href={resolve('/ong/analise-pendente')}>Analise da ONG</a>
+					{/if}
+				{:else if data.usuario.papel === 'admin'}
+					<a href={resolve('/admin/ongs')}>Painel admin</a>
+				{/if}
 				<form method="POST" action="/sair">
 					<button class="ghost-action" type="submit">Sair</button>
 				</form>

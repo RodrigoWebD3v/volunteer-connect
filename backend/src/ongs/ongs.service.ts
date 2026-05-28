@@ -115,6 +115,37 @@ export class OngsService {
     return this.toOwnOng(data);
   }
 
+  async removerMinhaOng(accessToken: string) {
+    const { usuario } = await this.obterUsuarioAtual(accessToken);
+    this.garantirUsuarioOng(usuario);
+
+    const perfil = await this.buscarPerfilDaOng(usuario.id);
+
+    if (!perfil) {
+      throw new NotFoundException('Perfil de ONG nao encontrado.');
+    }
+
+    const { error } = await this.supabaseService.adminClient
+      .from('usuarios')
+      .update({
+        ativo: false,
+        conta_suspensa: true,
+        atualizado_em: new Date().toISOString(),
+      })
+      .eq('id', usuario.id);
+
+    if (error) {
+      throw new BadRequestException('Falha ao remover perfil de ONG.');
+    }
+
+    return {
+      id: perfil.id,
+      removida: true,
+      mensagem:
+        'Perfil removido dos fluxos publicos. O historico foi preservado.',
+    };
+  }
+
   async listarParaAnalise(accessToken: string, status?: string) {
     const { usuario } = await this.obterUsuarioAtual(accessToken);
     this.garantirUsuarioAdmin(usuario);
@@ -138,6 +169,25 @@ export class OngsService {
     }
 
     return (data ?? []).map((ong) => this.toAdminOng(ong as PerfilOngRow));
+  }
+
+  async detalharParaAnalise(accessToken: string, id: string) {
+    const { usuario } = await this.obterUsuarioAtual(accessToken);
+    this.garantirUsuarioAdmin(usuario);
+
+    const { data, error } = await this.supabaseService.adminClient
+      .from('perfis_ongs')
+      .select(
+        'id,usuario_gestor_id,nome_fantasia,cnpj,descricao,site_url,cidade,estado,logo_storage_path,status_analise,motivo_reprovacao,analisado_por_usuario_id,analisado_em,reenviado_em,criado_em,usuarios!perfis_ongs_usuario_gestor_id_fkey(email,ativo,conta_suspensa)',
+      )
+      .eq('id', id)
+      .maybeSingle();
+
+    if (error || !data) {
+      throw new NotFoundException('ONG nao encontrada para analise.');
+    }
+
+    return this.toAdminOng(data as PerfilOngRow);
   }
 
   async aprovar(accessToken: string, id: string) {

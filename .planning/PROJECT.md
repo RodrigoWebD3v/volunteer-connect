@@ -4,7 +4,7 @@
 
 Volunteer Connect is a web platform for connecting volunteers with NGOs that need help. It centralizes volunteer opportunities, NGO profiles, events, applications, participation records, and basic communication so people who want to help can find real opportunities without confusion.
 
-The project is currently at initialization: the repository has only a README, while GitHub issues and project documents define the intended MVP around NestJS, SvelteKit, Supabase remoto, authentication, NGO CRUD, and an initial volunteer opportunity data model.
+The project now has the MVP foundation through applications: NestJS backend, SvelteKit frontend, Supabase remoto contracts, authentication/session flow, NGO analysis, opportunity marketplace, and volunteer applications.
 
 ## Core Value
 
@@ -14,18 +14,17 @@ Volunteers can find a trustworthy opportunity and NGOs can organize participatio
 
 ### Validated
 
-(None yet - ship to validate)
+- [x] Users can access a working web application with frontend, backend, TypeScript, linting, formatting, and local development scripts. Validated in Phase 1.
+- [x] The system has an initial relational data model for users, volunteers, NGOs, opportunities, applications, events, and participations. Validated in Phase 2.
+- [x] Users can register, log in, keep an authenticated session, and act according to their role: volunteer, NGO, or admin. Validated in Phase 3.
+- [x] NGOs can create, edit, list, view, and remove their organization profile through the MVP flow. Validated in Phase 4.
+- [x] NGOs can publish volunteer opportunities with clear activity, schedule, location, and capacity information. Validated in Phase 5.
+- [x] Volunteers can browse opportunities and apply to participate. Validated in Phase 6.
+- [x] Volunteers and NGOs can use a simple communication path around an opportunity or application. Validated in Phase 6.
 
 ### Active
 
-- [ ] Users can access a working web application with frontend, backend, TypeScript, linting, formatting, and local development scripts.
-- [ ] The system has an initial relational data model for users, volunteers, NGOs, opportunities, applications, events, and participations.
-- [ ] Users can register, log in, keep an authenticated session, and act according to their role: volunteer, NGO, or admin.
-- [ ] NGOs can create, edit, list, view, and delete their organization profile.
-- [ ] NGOs can publish volunteer opportunities with clear activity, schedule, location, and requirement information.
-- [ ] Volunteers can browse opportunities and apply to participate.
 - [ ] The system records applications, event participation, and engagement history.
-- [ ] Volunteers and NGOs can use a simple communication path around an opportunity or application.
 - [ ] The interface is simple, intuitive, and accessible enough for first-time users.
 
 ### Out of Scope
@@ -66,11 +65,11 @@ Volunteers can find a trustworthy opportunity and NGOs can organize participatio
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Use NestJS for the backend | Existing GitHub setup issue names NestJS as the backend direction and it fits role-based APIs well. | - Pending |
-| Use SvelteKit for the frontend | Existing GitHub setup issue names SvelteKit and it supports a focused web MVP. | - Pending |
+| Use NestJS for the backend | Existing GitHub setup issue names NestJS as the backend direction and it fits role-based APIs well. | - Active |
+| Use SvelteKit for the frontend | Existing GitHub setup issue names SvelteKit and it supports a focused web MVP. | - Active |
 | Use Supabase remoto for the database | The project should avoid local database setup friction; Supabase provides a managed PostgreSQL target for development. | - Active |
-| Build web-first | The project documents describe a digital/web app and mobile is not required to validate the core flow. | - Pending |
-| Keep communication simple in v1 | Direct communication matters, but real-time chat would expand scope before matching is validated. | - Pending |
+| Build web-first | The project documents describe a digital/web app and mobile is not required to validate the core flow. | - Active |
+| Keep communication simple in v1 | Direct communication matters, but real-time chat would expand scope before matching is validated. | - Active |
 
 ## Evolution
 
@@ -90,4 +89,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-05-04 after Supabase decision*
+*Last updated: 2026-05-25 after Phase 6 execution*

@@ -5,6 +5,7 @@ import {
   Headers,
   HttpCode,
   HttpStatus,
+  UnauthorizedException,
   Post,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
@@ -33,8 +34,10 @@ export class AuthController {
       biografia: body.biografia,
       nomeFantasia: body.nomeFantasia,
       cnpj: body.cnpj,
+      cpf: body.cpf,
       descricaoOng: body.descricaoOng,
       siteUrl: body.siteUrl,
+      logoDataUrl: body.logoDataUrl,
     });
 
     return {
@@ -53,7 +56,7 @@ export class AuthController {
       : undefined;
 
     if (!token) {
-      throw new Error('Authorization Bearer token ausente');
+      throw new UnauthorizedException('Authorization Bearer token ausente.');
     }
 
     return this.authService.obterSessaoAtual(token);
