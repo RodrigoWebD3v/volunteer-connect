@@ -1,27 +1,154 @@
--- Seed ficticio para validar relacionamentos do modelo inicial.
--- Nao usar dados reais de pessoas, ONGs ou credenciais.
+-- Seed ficticio para validar os relacionamentos atuais do MVP.
+-- Nao usar dados reais de pessoas, ONGs, documentos ou credenciais.
 
-truncate table participacoes, eventos, inscricoes, oportunidades, perfis_ongs, perfis_voluntarios, usuarios restart identity cascade;
+truncate table presencas, inscricoes, oportunidades, perfis_ongs, perfis_voluntarios, usuarios
+restart identity cascade;
 
-insert into usuarios (id, nome_completo, email, papel) values
-  ('11111111-1111-1111-1111-111111111111', 'Ana Souza', 'ana.voluntaria@example.org', 'voluntario'),
-  ('22222222-2222-2222-2222-222222222222', 'Carlos Lima', 'carlos.ong@example.org', 'ong'),
-  ('33333333-3333-3333-3333-333333333333', 'Patricia Admin', 'patricia.admin@example.org', 'admin');
+insert into usuarios (id, nome_completo, email, papel, ativo, conta_suspensa) values
+  ('11111111-1111-4111-8111-111111111111', 'Ana Voluntaria Demo', 'ana.voluntaria@example.org', 'voluntario', true, false),
+  ('22222222-2222-4222-8222-222222222222', 'Bruno Voluntario Demo', 'bruno.voluntario@example.org', 'voluntario', true, false),
+  ('33333333-3333-4333-8333-333333333333', 'Carla Gestora Demo', 'carla.gestora@example.org', 'ong', true, false),
+  ('44444444-4444-4444-8444-444444444444', 'Diego Gestor Pendente Demo', 'diego.gestor@example.org', 'ong', true, false),
+  ('55555555-5555-4555-8555-555555555555', 'Eva Admin Demo', 'eva.admin@example.org', 'admin', true, false);
 
-insert into perfis_voluntarios (id, usuario_id, telefone, cidade, estado, biografia) values
-  ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', '11111111-1111-1111-1111-111111111111', '+55 11 99999-1111', 'São Paulo', 'SP', 'Voluntária focada em educação comunitária.');
+insert into perfis_voluntarios (id, usuario_id, cpf, telefone, cidade, estado, biografia) values
+  ('aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa', '11111111-1111-4111-8111-111111111111', '00000000001', '+55 48 90000-0001', 'Criciuma', 'SC', 'Voluntaria demo interessada em campanhas comunitarias.'),
+  ('bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb', '22222222-2222-4222-8222-222222222222', '00000000002', '+55 48 90000-0002', 'Icara', 'SC', 'Voluntario demo interessado em educacao.');
 
-insert into perfis_ongs (id, usuario_gestor_id, nome_fantasia, cnpj, descricao, cidade, estado, verificada) values
-  ('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb', '22222222-2222-2222-2222-222222222222', 'ONG Mãos Unidas', '12.345.678/0001-90', 'ONG fictícia para ações locais de impacto social.', 'São Paulo', 'SP', true);
+insert into perfis_ongs (
+  id,
+  usuario_gestor_id,
+  nome_fantasia,
+  cnpj,
+  descricao,
+  site_url,
+  cidade,
+  estado,
+  verificada,
+  logo_storage_path,
+  status_analise,
+  motivo_reprovacao,
+  analisado_por_usuario_id,
+  analisado_em
+) values
+  (
+    'cccccccc-cccc-4ccc-8ccc-cccccccccccc',
+    '33333333-3333-4333-8333-333333333333',
+    'Rede Solidaria Demo',
+    '00000000000101',
+    'ONG ficticia para validacao de oportunidades e inscricoes.',
+    'https://example.org/rede-solidaria-demo',
+    'Criciuma',
+    'SC',
+    true,
+    'demo/rede-solidaria-logo.png',
+    'aprovado',
+    null,
+    '55555555-5555-4555-8555-555555555555',
+    now()
+  ),
+  (
+    'dddddddd-dddd-4ddd-8ddd-dddddddddddd',
+    '44444444-4444-4444-8444-444444444444',
+    'Instituto Pendente Demo',
+    '00000000000102',
+    'ONG ficticia aguardando analise administrativa.',
+    null,
+    'Icara',
+    'SC',
+    false,
+    'demo/instituto-pendente-logo.png',
+    'pendente',
+    null,
+    null,
+    null
+  );
 
-insert into oportunidades (id, ong_id, titulo, descricao, localizacao, data_inicio, data_fim, vagas, status) values
-  ('cccccccc-cccc-cccc-cccc-cccccccccccc', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb', 'Apoio escolar de fim de semana', 'Suporte em reforço de leitura e matemática para crianças.', 'Centro Comunitário Vila Esperança', '2026-06-01', '2026-08-30', 20, 'publicada');
+insert into oportunidades (
+  id,
+  perfil_ong_id,
+  titulo,
+  descricao,
+  tipo_atividade,
+  cidade,
+  estado,
+  data_inicio,
+  data_fim,
+  prazo_inscricao,
+  quantidade_vagas,
+  status
+) values
+  (
+    'eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee',
+    'cccccccc-cccc-4ccc-8ccc-cccccccccccc',
+    'Apoio em campanha de alimentos',
+    'Ajude na organizacao, triagem e distribuicao de cestas para familias acompanhadas pela ONG.',
+    'Doacoes',
+    'Criciuma',
+    'SC',
+    '2026-06-15 09:00:00+00',
+    '2026-06-16 17:00:00+00',
+    '2026-06-10 23:59:00+00',
+    18,
+    'publicada'
+  ),
+  (
+    'ffffffff-ffff-4fff-8fff-ffffffffffff',
+    'cccccccc-cccc-4ccc-8ccc-cccccccccccc',
+    'Mutirao comunitario concluido',
+    'Atividade demo encerrada para validacao de historico de presencas.',
+    'Comunidade',
+    'Criciuma',
+    'SC',
+    '2026-01-10 09:00:00+00',
+    '2026-01-10 17:00:00+00',
+    '2026-01-05 23:59:00+00',
+    6,
+    'encerrada'
+  );
 
-insert into inscricoes (id, oportunidade_id, voluntario_id, mensagem, status) values
-  ('dddddddd-dddd-dddd-dddd-dddddddddddd', 'cccccccc-cccc-cccc-cccc-cccccccccccc', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 'Tenho disponibilidade aos sábados pela manhã.', 'aprovada');
+insert into inscricoes (
+  id,
+  oportunidade_id,
+  voluntario_usuario_id,
+  status,
+  mensagem,
+  observacao_ong
+) values
+  (
+    '12121212-1212-4121-8121-121212121212',
+    'eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee',
+    '11111111-1111-4111-8111-111111111111',
+    'pendente',
+    'Posso ajudar no turno da tarde.',
+    null
+  ),
+  (
+    '13131313-1313-4131-8131-131313131313',
+    'ffffffff-ffff-4fff-8fff-ffffffffffff',
+    '22222222-2222-4222-8222-222222222222',
+    'aprovada',
+    'Tenho experiencia com organizacao de mutiroes.',
+    'Aprovado para validacao de presenca.'
+  );
 
-insert into eventos (id, oportunidade_id, titulo, descricao, inicio_em, fim_em, localizacao, status) values
-  ('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee', 'cccccccc-cccc-cccc-cccc-cccccccccccc', 'Treinamento inicial de voluntários', 'Encontro de alinhamento com equipe pedagógica.', '2026-05-30 09:00:00+00', '2026-05-30 11:00:00+00', 'Sala 2 - Centro Comunitário', 'agendado');
-
-insert into participacoes (id, oportunidade_id, voluntario_id, evento_id, status, horas_voluntariadas, observacoes) values
-  ('ffffffff-ffff-ffff-ffff-ffffffffffff', 'cccccccc-cccc-cccc-cccc-cccccccccccc', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee', 'confirmada', 0, 'Presença confirmada para o treinamento inicial.');
+insert into presencas (
+  id,
+  inscricao_id,
+  oportunidade_id,
+  voluntario_usuario_id,
+  status,
+  observacao,
+  registrado_por_usuario_id,
+  registrado_em
+) values
+  (
+    '14141414-1414-4141-8141-141414141414',
+    '13131313-1313-4131-8131-131313131313',
+    'ffffffff-ffff-4fff-8fff-ffffffffffff',
+    '22222222-2222-4222-8222-222222222222',
+    'presente',
+    'Participou da organizacao do mutirao demo.',
+    '33333333-3333-4333-8333-333333333333',
+    '2026-01-10 18:00:00+00'
+  );

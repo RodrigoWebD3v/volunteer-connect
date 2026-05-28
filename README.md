@@ -1,8 +1,8 @@
 # Volunteer Connect
 
-Volunteer Connect é uma plataforma para conectar organizações, oportunidades de voluntariado e pessoas voluntárias.
+Volunteer Connect é uma plataforma web para conectar pessoas voluntárias a ONGs com oportunidades reais, organizadas e acompanháveis.
 
-Esta fase do projeto entrega a fundação local: backend NestJS, frontend SvelteKit, scripts npm de qualidade e variáveis de ambiente para integração com Supabase remoto. A modelagem do banco, autenticação e fluxos de produto começam na Fase 2.
+O MVP entrega backend NestJS, frontend SvelteKit, integração com Supabase remoto, autenticação, cadastro de voluntário/ONG, análise administrativa de ONGs, oportunidades, inscrições, presenças e documentação de entrega acadêmica.
 
 ## Pré-requisitos
 
@@ -33,6 +33,8 @@ Depois, preencha no `.env` os valores do painel do Supabase:
 - `SUPABASE_URL`
 - `SUPABASE_ANON_KEY`
 - `SUPABASE_SERVICE_ROLE_KEY`
+- `SUPABASE_LOGOS_BUCKET`, opcional; padrão `logos-ongs`
+- `PUBLIC_BACKEND_URL`, no frontend; padrão local `http://localhost:3000`
 - `DATABASE_URL`, quando for necessário executar migrations ou scripts SQL diretos
 
 Nunca commite o `.env`. A chave `SUPABASE_SERVICE_ROLE_KEY` deve ser usada somente no backend.
@@ -90,4 +92,32 @@ Para um guia passo a passo de setup, execução e validação local, consulte `d
 
 ## Banco de dados
 
-O projeto usa Supabase remoto para evitar dependência de banco local. Schema, migrations e dados iniciais serão tratados na Fase 2 com Supabase client e scripts/migrations SQL versionados no repositório.
+O projeto usa Supabase remoto para evitar dependência de banco local. As migrations versionadas ficam em `supabase/migrations/` e são contratos locais: revise antes de executar em qualquer banco remoto.
+
+Ordem sugerida para ambiente autorizado:
+
+```powershell
+Get-ChildItem supabase/migrations/*.sql | Sort-Object Name
+```
+
+Execute manualmente no SQL editor ou via CLI Supabase conforme a política do grupo.
+
+## Fluxos do MVP
+
+- Guest lista e abre oportunidades públicas.
+- Voluntário cria conta, entra, inscreve-se e acompanha inscrições/presenças.
+- ONG cria conta com CNPJ/logo, aguarda análise, publica oportunidades após aprovação e registra presenças.
+- Admin aprova/reprova ONGs em telas administrativas.
+
+## Entrega acadêmica
+
+Os documentos finais estão em `docs/delivery/` e `docs/verification/`:
+
+- `docs/delivery/guia-entrega.md`
+- `docs/delivery/rastreabilidade-requisitos.md`
+- `docs/delivery/arquitetura-final.md`
+- `docs/delivery/demo-local.md`
+- `docs/delivery/evidencias-testes.md`
+- `docs/delivery/release-checklist.md`
+- `docs/delivery/limitacoes-e-v2.md`
+- `docs/verification/final-security-review.md`

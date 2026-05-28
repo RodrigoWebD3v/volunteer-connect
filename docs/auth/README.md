@@ -4,7 +4,7 @@ Este documento registra a configuracao inicial de autenticacao do Volunteer Conn
 
 ## Decisao principal
 
-O projeto usa Supabase Auth para cadastro, login, confirmacao de email, recuperacao de senha, sessao e logout. O backend NestJS nao emite JWT proprio e nao armazena `senha_hash` na tabela `usuarios`.
+O projeto usa Supabase Auth para cadastro, login, recuperacao de senha, sessao e logout. No MVP academico local, novos cadastros sao criados com email ja confirmado para evitar dependencia de entrega de emails. O backend NestJS nao emite JWT proprio e nao armazena `senha_hash` na tabela `usuarios`.
 
 ## Identidade e dominio
 
