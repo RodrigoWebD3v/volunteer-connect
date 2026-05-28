@@ -370,7 +370,10 @@ export class OportunidadesService {
       return 'Revise as datas: o prazo de inscricao deve terminar ate o inicio, e a data final deve ser igual ou posterior ao inicio.';
     }
 
-    if (normalized.includes('foreign key') || normalized.includes('perfil_ong_id')) {
+    if (
+      normalized.includes('foreign key') ||
+      normalized.includes('perfil_ong_id')
+    ) {
       return 'Nao foi possivel vincular a oportunidade a ONG aprovada. Saia, entre novamente e tente de novo.';
     }
 

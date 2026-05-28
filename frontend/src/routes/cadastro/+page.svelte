@@ -37,12 +37,7 @@
 		<fieldset>
 			<legend>Tipo de conta</legend>
 			<label class="radio-option">
-				<input
-					type="radio"
-					name="tipo_conta"
-					value="voluntario"
-					bind:group={tipoSelecionado}
-				/>
+				<input type="radio" name="tipo_conta" value="voluntario" bind:group={tipoSelecionado} />
 				<span class="radio-copy">
 					<strong>Voluntario</strong>
 					<small>Encontrar oportunidades e se inscrever.</small>

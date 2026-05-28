@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: active
-last_updated: "2026-05-28T18:56:00-03:00"
+last_updated: "2026-05-28T19:03:00-03:00"
 progress:
   total_phases: 13
   completed_phases: 12
@@ -63,6 +63,7 @@ Fases 1 a 10 concluídas para o MVP acadêmico local. Após review técnico em 2
 - Quick task em 2026-05-28: desativada temporariamente a exigencia de confirmacao de email no cadastro e confirmados usuarios Auth pendentes no Supabase remoto de desenvolvimento. `npm run check` e `npm test` passaram.
 - Quick task em 2026-05-28: validadas regras de criacao de oportunidade, recarregado schema cache do Supabase/PostgREST e melhoradas mensagens de erro do backend. `npm --prefix backend run build` e `npm --prefix backend test` passaram.
 - Quick task em 2026-05-28: corrigidos links tipados do SvelteKit em login e listagem de oportunidades. `npm --prefix frontend run check` passou.
+- Quick task em 2026-05-28: corrigida formatacao Prettier em oportunidades e normalizados checks de lint/formatacao. `npm run ci` passou.
 
 ---
-*Last updated: 2026-05-28 after SvelteKit typed link fix*
+*Last updated: 2026-05-28 after CI formatting fix*

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
+
 	type OportunidadeCard = {
 		ong?: string | { nomeFantasia?: string | null } | null;
 	};
@@ -57,7 +59,7 @@
 
 	<div class="grid" aria-label="Lista de oportunidades">
 		{#each oportunidades as oportunidade (oportunidade.id)}
-			<a class="card" href={`/oportunidades/${oportunidade.id}`}>
+			<a class="card" href={resolve(`/oportunidades/${oportunidade.id}` as '/oportunidades')}>
 				<div class="logo" aria-hidden="true">{nomeOng(oportunidade).slice(0, 2)}</div>
 				<div>
 					<p class="tag">{oportunidade.tipoAtividade}</p>
