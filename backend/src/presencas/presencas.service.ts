@@ -160,10 +160,13 @@ export class PresencasService {
       throw new NotFoundException('Oportunidade nao encontrada para esta ONG.');
     }
 
-    const encerradaPorStatus = data.status === 'encerrada';
-    const encerradaPorData = new Date(String(data.data_fim)) < new Date();
+    if (data.status === 'cancelada') {
+      throw new BadRequestException(
+        'Presenca nao pode ser registrada em oportunidade cancelada.',
+      );
+    }
 
-    if (!encerradaPorStatus && !encerradaPorData) {
+    if (data.status !== 'encerrada') {
       throw new BadRequestException(
         'Presenca so pode ser registrada apos conclusao da oportunidade.',
       );
